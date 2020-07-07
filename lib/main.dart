@@ -4,6 +4,45 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+// 실제 UI가 그려지는 부분은 이 아래
+class _MyAppState extends State<MyApp> {
+  int cnt = 0;
+
+  void increase() {
+    cnt++;
+    setState(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Stateful Widget'),
+        ),
+        body: Center(
+          child: Column(
+            children: <Widget>[
+              Text('$cnt'),
+              RaisedButton(
+                onPressed: increase,
+                child: Text("Button"),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/*
+
 class MyApp extends StatelessWidget {
   int cnt = 0;
 
@@ -35,33 +74,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/*
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-*/
-
-/* 
-  MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.blueGrey,
-        appBar: AppBar(
-          title: Text('Stateless Widget'),
-          backgroundColor: Colors.blueGrey[800],
-        ),
-        body: Column(children: <Widget>[
-          Center(
-            child: Text("$cnt"),
-          ),
-          RaisedButton(
-            onPressed: increase,
-            child: Text("Button"),
-          ),
-        ],
-      ),
-    ),
-  );
 */
